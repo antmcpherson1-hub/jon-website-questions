@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your new website: a few questions</title>
+<style>
+  :root { --ink:#1d1d1b; --muted:#6b6a66; --line:#d9d6cf; --bg:#f6f4ef; --accent:#2f2f2c; --soft:#eeece7; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--ink); background:var(--bg); }
+  main { max-width:620px; margin:0 auto; padding:20px 16px 40px; }
+  header p { color:var(--muted); margin:4px 0 0; }
+  h1 { font-size:1.4rem; margin:0; }
+  .progress { height:6px; background:var(--soft); border-radius:3px; margin:16px 0 6px; overflow:hidden; }
+  .progress div { height:100%; background:var(--accent); width:0; transition:width .2s; }
+  .stepno { color:var(--muted); font-size:.9rem; margin-bottom:12px; }
+  .step { display:none; background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 18px; }
+  .step.on { display:block; }
+  h2 { font-size:1.25rem; margin:0 0 16px; }
+  .q { margin:0 0 22px; }
+  .q > .label { display:block; font-weight:600; margin-bottom:8px; }
+  .hint { color:var(--muted); font-size:.9rem; margin:-4px 0 8px; }
+  .pills { display:flex; gap:8px; flex-wrap:wrap; }
+  .pills label { flex:1 1 140px; text-align:center; padding:12px; border:2px solid var(--line); border-radius:10px; cursor:pointer; font-weight:500; }
+  .pills input { position:absolute; opacity:0; pointer-events:none; }
+  .pills label:has(input:checked) { border-color:var(--accent); background:var(--accent); color:#fff; }
+  .pills label:has(input:focus-visible) { outline:3px solid #8aa; outline-offset:2px; }
+  input[type=text], input[type=tel], input[type=email], textarea { width:100%; font:inherit; padding:12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); }
+  textarea { min-height:90px; }
+  .hidden { display:none !important; }
+  .nav { display:flex; gap:10px; margin-top:16px; }
+  button { font:inherit; font-weight:600; padding:14px 18px; border-radius:10px; border:0; background:var(--accent); color:#fff; cursor:pointer; flex:1; }
+  button.back { background:#fff; color:var(--ink); border:1px solid var(--ink); flex:0 0 110px; }
+  pre { white-space:pre-wrap; background:var(--soft); border-radius:10px; padding:12px; font:14px/1.45 ui-monospace, Consolas, monospace; max-height:50vh; overflow:auto; }
+  #done { color:#2e6b34; margin-top:10px; min-height:1.4em; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Microcement Creations: your new website</h1>
+    <p>Hi Jon. A few quick questions so we get the website right. Short answers are fine, skip anything you're not sure about.</p>
+  </header>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="stepno" id="stepno"></div>
+
+  <form id="f" onsubmit="return false">
+
+  <div class="step">
+    <h2>1. What you do</h2>
+    <div class="q">
+      <span class="label">Tick every job you want on the website</span>
+      <div class="pills">
+        <label><input type="checkbox" name="job" value="Microcement floors"> Microcement floors</label>
+        <label><input type="checkbox" name="job" value="Microcement walls"> Microcement walls</label>
+        <label><input type="checkbox" name="job" value="Bathrooms / wet rooms"> Bathrooms / wet rooms</label>
+        <label><input type="checkbox" name="job" value="Kitchens"> Kitchens</label>
+        <label><input type="checkbox" name="job" value="Stairs"> Stairs</label>
+        <label><input type="checkbox" name="job" value="Worktops"> Worktops</label>
+        <label><input type="checkbox" name="job" value="Plastering"> Plastering</label>
+        <label><input type="checkbox" name="job" value="Polished plaster"> Polished plaster</label>
+      </div>
+      <p class="hint" style="margin-top:8px">Anything else you do:</p>
+      <input type="text" id="job_other" placeholder="e.g. outdoor areas, commercial units">
+    </div>
+    <div class="q">
+      <span class="label">Which job would you like more of?</span>
+      <input type="text" id="more_of" placeholder="e.g. bathrooms">
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>2. Where and who</h2>
+    <div class="q">
+      <span class="label">Where do you work?</span>
+      <p class="hint">Towns, counties, or how far from your base</p>
+      <input type="text" id="areas" placeholder="e.g. Kent and South East London, up to 40 miles">
+    </div>
+    <div class="q">
+      <span class="label">Who are your usual customers?</span>
+      <div class="pills">
+        <label><input type="checkbox" name="cust" value="Homeowners"> Homeowners</label>
+        <label><input type="checkbox" name="cust" value="Builders"> Builders</label>
+        <label><input type="checkbox" name="cust" value="Designers / architects"> Designers / architects</label>
+        <label><input type="checkbox" name="cust" value="Shops / offices"> Shops / offices</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>3. Pages and web address</h2>
+    <div class="q">
+      <span class="label">Pages you want</span>
+      <div class="pills">
+        <label><input type="checkbox" name="page" value="Home" checked> Home</label>
+        <label><input type="checkbox" name="page" value="Services" checked> Services</label>
+        <label><input type="checkbox" name="page" value="Gallery" checked> Gallery</label>
+        <label><input type="checkbox" name="page" value="About"> About</label>
+        <label><input type="checkbox" name="page" value="Reviews"> Reviews</label>
+        <label><input type="checkbox" name="page" value="Contact" checked> Contact</label>
+      </div>
+      <p class="hint" style="margin-top:8px">Any other page:</p>
+      <input type="text" id="page_other">
+    </div>
+    <div class="q">
+      <span class="label">Do you already own a web address (domain)?</span>
+      <div class="pills">
+        <label><input type="radio" name="dom" value="yes"> Yes</label>
+        <label><input type="radio" name="dom" value="no" checked> No</label>
+        <label><input type="radio" name="dom" value="unsure"> Not sure</label>
+      </div>
+      <div id="dom_box" class="hidden" style="margin-top:8px"><input type="text" id="dom_name" placeholder="e.g. microcementcreations.co.uk"></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>4. Contact details to show</h2>
+    <div class="q">
+      <span class="label">Are these right?</span>
+      <p class="hint">Change anything that is wrong</p>
+      <input type="tel" id="phone" value="07973 987533" style="margin-bottom:8px">
+      <input type="email" id="email" value="microcementcreations@gmail.com">
+    </div>
+    <div class="q">
+      <span class="label">Also show</span>
+      <div class="pills">
+        <label><input type="checkbox" name="soc" value="WhatsApp"> WhatsApp</label>
+        <label><input type="checkbox" name="soc" value="Instagram"> Instagram</label>
+        <label><input type="checkbox" name="soc" value="Facebook"> Facebook</label>
+      </div>
+      <p class="hint" style="margin-top:8px">Instagram / Facebook names, if ticked:</p>
+      <input type="text" id="soc_names">
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>5. Photos and reviews</h2>
+    <div class="q">
+      <span class="label">Can we use the photos already on your Wix site?</span>
+      <div class="pills">
+        <label><input type="radio" name="photos" value="Yes, use them" checked> Yes, use them</label>
+        <label><input type="radio" name="photos" value="Yes, but I will say which"> Yes, but I will say which</label>
+        <label><input type="radio" name="photos" value="No, I will send new ones"> No, I will send new ones</label>
+      </div>
+      <p class="hint" style="margin-top:8px">Any favourites, or any we must not use:</p>
+      <input type="text" id="photo_notes">
+    </div>
+    <div class="q">
+      <span class="label">Customer reviews</span>
+      <p class="hint">Paste a few quotes (first name and town), or a link to your Google / Facebook reviews</p>
+      <textarea id="reviews"></textarea>
+    </div>
+  </div>
+
+  <div class="step">
+    <h2>6. Anything else</h2>
+    <div class="q">
+      <span class="label">Anything we must NOT say</span>
+      <p class="hint">e.g. guarantees, prices, years in business</p>
+      <textarea id="not_say"></textarea>
+    </div>
+    <div class="q">
+      <span class="label">Anything you would like said about you</span>
+      <textarea id="say"></textarea>
+    </div>
+    <div class="q">
+      <span class="label">Your answers</span>
+      <pre id="summary"></pre>
+    </div>
+    <div class="nav">
+      <button type="button" id="send">Send to Antony</button>
+      <button type="button" id="copy" class="back" style="flex:1">Copy for WhatsApp</button>
+    </div>
+    <div id="done"></div>
+  </div>
+
+  </form>
+  <div class="nav">
+    <button type="button" id="prev" class="back">Back</button>
+    <button type="button" id="next">Next</button>
+  </div>
+</main>
+<script>
+  const TO = 'antmcpherson1@gmail.com';
+  const $ = (id) => document.getElementById(id);
+  const checked = (n) => [...document.querySelectorAll('input[name=' + n + ']:checked')].map((c) => c.value);
+  const pick = (n) => (document.querySelector('input[name=' + n + ']:checked') || {}).value;
+  const txt = (id) => $(id).value.trim() || '-';
+  const list = (n, extraId) => { const a = checked(n); const e = extraId ? $(extraId).value.trim() : ''; if (e) a.push(e); return a.join(', ') || '-'; };
+
+  function answers() {
+    return [
+      'MICROCEMENT CREATIONS: WEBSITE ANSWERS', '',
+      '1. WHAT I DO', 'Jobs: ' + list('job', 'job_other'), 'Want more of: ' + txt('more_of'), '',
+      '2. WHERE AND WHO', 'Areas: ' + txt('areas'), 'Customers: ' + list('cust'), '',
+      '3. PAGES AND DOMAIN', 'Pages: ' + list('page', 'page_other'),
+      'Domain: ' + (pick('dom') === 'yes' ? txt('dom_name') : pick('dom') === 'no' ? 'none yet' : 'not sure'), '',
+      '4. CONTACT', 'Phone: ' + txt('phone'), 'Email: ' + txt('email'), 'Also show: ' + list('soc') + (txt('soc_names') !== '-' ? ' (' + txt('soc_names') + ')' : ''), '',
+      '5. PHOTOS AND REVIEWS', 'Wix photos: ' + (pick('photos') || '-'), 'Photo notes: ' + txt('photo_notes'), 'Reviews: ' + txt('reviews'), '',
+      '6. ANYTHING ELSE', 'Do not say: ' + txt('not_say'), 'Please say: ' + txt('say'),
+    ].join('\n');
+  }
+  function refresh() {
+    $('dom_box').classList.toggle('hidden', pick('dom') !== 'yes');
+    $('summary').textContent = answers();
+  }
+
+  const steps = [...document.querySelectorAll('.step')];
+  let at = 0;
+  function show(i) {
+    at = Math.max(0, Math.min(steps.length - 1, i));
+    steps.forEach((s, j) => s.classList.toggle('on', j === at));
+    $('bar').style.width = ((at + 1) / steps.length * 100) + '%';
+    $('stepno').textContent = 'Step ' + (at + 1) + ' of ' + steps.length;
+    $('prev').style.visibility = at ? 'visible' : 'hidden';
+    $('next').classList.toggle('hidden', at === steps.length - 1);
+    refresh(); window.scrollTo(0, 0);
+  }
+  $('next').onclick = () => show(at + 1);
+  $('prev').onclick = () => show(at - 1);
+  $('f').addEventListener('input', refresh);
+  $('f').addEventListener('change', refresh);
+
+  const done = $('done');
+  $('send').onclick = () => {
+    location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('Microcement Creations website answers') + '&body=' + encodeURIComponent(answers());
+    done.textContent = 'Your email app should open with everything filled in. Just press send.';
+  };
+  $('copy').onclick = async () => {
+    try { await navigator.clipboard.writeText(answers()); done.textContent = 'Copied. Paste it into WhatsApp to Antony.'; }
+    catch { done.textContent = 'Could not copy. Use Send instead.'; }
+  };
+  show(0);
+</script>
+</body>
+</html>
